@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { NiceController } from './nice/nice.controller';
+import { NiceService } from './nice/nice.service';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -8,6 +9,6 @@ import { NiceController } from './nice/nice.controller';
     isGlobal: true,
   })],
   controllers: [NiceController],
-  providers: [],
+  providers: [NiceService],
 })
 export class AppModule { }
