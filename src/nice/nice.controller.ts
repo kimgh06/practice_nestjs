@@ -15,23 +15,23 @@ export class NiceController {
     return this.S.getone(id);
   }
   @Get(':id')
-  hello(@Param("id") id: string): string {
-    return this.S.getParam(id);
+  hello(@Param("id") id: string): Nice {
+    return this.S.getone(id);
   }
   @Post()
-  creates(@Body() movie: ForNice): object {
+  creates(@Body() movie: ForNice): void {
     return this.S.create(movie);
   }
   @Put(":id")
   asdf(@Param("id") id: string, @Body() body: object): object {
     return this.S.putone(id, body);
   }
-  @Delete()
-  asdfasdf(@Param('id') id: string): string {
+  @Delete(":id")
+  delId(@Param('id') id: string) {
     return this.S.delone(id)
   }
-  @Patch()
-  asdasdff(): string {
-    return this.S.patone();
+  @Patch(":id")
+  asdasdff(@Param('id') id: string, @Body() body: object): void {
+    return this.S.patone(id, body);
   }
 }
