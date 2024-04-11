@@ -4,9 +4,3 @@ export class Nice {
   year: number;
   genres: string[];
 }
-
-export class ForNice {
-  title: string;
-  year: number;
-  genres: string[];
-}

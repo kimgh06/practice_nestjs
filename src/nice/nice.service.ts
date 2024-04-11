@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { ForNice, Nice } from './entities/nice.entity';
+import { Nice } from './entities/nice.entity';
+import { CreateDTO } from './dtos/create.dto';
 
 @Injectable()
 export class NiceService {
@@ -9,33 +10,33 @@ export class NiceService {
     return this.nices;
   }
 
-  getone(id: string): Nice {
-    if (!this.nices.find(e => e.id === +id)) {
+  getone(id: number): Nice {
+    if (!this.nices.find(e => e.id === id)) {
       throw new NotFoundException(`not found the id: ${id}`);
     }
-    return this.nices.find(e => e.id === +id);
+    return this.nices.find(e => e.id === id);
   }
 
-  create(ob: ForNice): void {
+  create(ob: CreateDTO): void {
     this.nices.push({
       id: this.nices.length + 1,
       ...ob
     })
   }
 
-  putone(id: string, ob: object): object {
+  putone(id: number, ob: CreateDTO): object {
     return {
       fxxk: id,
       ...ob
     }
   }
 
-  delone(id: string) {
+  delone(id: number) {
     this.getone(id);
-    this.nices = this.nices.filter(e => e.id !== +id)
+    this.nices = this.nices.filter(e => e.id !== id)
   }
 
-  patone(id: string, update: object): void {
+  patone(id: number, update: CreateDTO): void {
     const asdf = this.getone(id);
     this.delone(id);
     this.nices.push({ ...asdf, ...update })
