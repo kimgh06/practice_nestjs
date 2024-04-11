@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@
 import { Nice } from './entities/nice.entity';
 import { NiceService } from './nice.service';
 import { CreateDTO } from './dtos/create.dto';
+import { UpdateDTO } from './dtos/update.dto';
 
 @Controller('nice')
 export class NiceController {
@@ -32,7 +33,7 @@ export class NiceController {
     return this.S.delone(id)
   }
   @Patch(":id")
-  asdasdff(@Param('id') id: number, @Body() body: CreateDTO): void {
+  asdasdff(@Param('id') id: number, @Body() body: UpdateDTO): void {
     return this.S.patone(id, body);
   }
 }

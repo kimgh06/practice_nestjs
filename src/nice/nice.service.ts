@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Nice } from './entities/nice.entity';
 import { CreateDTO } from './dtos/create.dto';
+import { UpdateDTO } from './dtos/update.dto';
 
 @Injectable()
 export class NiceService {
@@ -36,7 +37,7 @@ export class NiceService {
     this.nices = this.nices.filter(e => e.id !== id)
   }
 
-  patone(id: number, update: CreateDTO): void {
+  patone(id: number, update: UpdateDTO): void {
     const asdf = this.getone(id);
     this.delone(id);
     this.nices.push({ ...asdf, ...update })

@@ -1,10 +1,11 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateDTO {
   @IsString()
   readonly title: string;
   @IsNumber()
   readonly year: number;
-  @IsString({ each: true })
+  @IsString({ each: false })
+  @IsOptional()
   readonly genres: string[];
 }
