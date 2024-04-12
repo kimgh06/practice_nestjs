@@ -5,7 +5,7 @@ export class CreateDTO {
   readonly title: string;
   @IsNumber()
   readonly year: number;
-  @IsString({ each: false })
+  @IsString({ each: true })
   @IsOptional()
   readonly genres: string[];
 }

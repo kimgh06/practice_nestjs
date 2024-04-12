@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { NiceController } from './nice/nice.controller';
-import { NiceService } from './nice/nice.service';
+import { NiceModule } from './nice/nice.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
     cache: true,
     isGlobal: true,
-  })],
-  controllers: [NiceController],
-  providers: [NiceService],
+  }), NiceModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule { }
