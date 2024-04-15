@@ -81,5 +81,25 @@ describe('NiceService', () => {
       const after = service.getall().length;
       expect(after).toBeGreaterThan(before);
     })
+    it('not found', () => {
+      try {
+        service.patone(-1, { title: 'fck' });
+      } catch (e) {
+        expect(e).toBeInstanceOf(NotFoundException);
+      }
+    })
+  })
+
+  describe('update', () => {
+    it('patch one', () => {
+      service.create({
+        "title": "helloworL",
+        "year": 1324,
+        "genres": ["asdfasdf", "fefe"]
+      });
+      service.patone(1, { title: 'hello' });
+      const one = service.getone(1);
+      expect(one.title).toEqual('hello')
+    })
   })
 });
